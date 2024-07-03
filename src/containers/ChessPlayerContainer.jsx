@@ -1,6 +1,5 @@
 import { useState , useEffect } from "react";
 import PlayerSearchForm from "../components/PlayerSearchForm";
-import PlayerStats from "../components/PlayerStats";
 import Player from "./Player";
 
 const ChessPlayerContainer = () => {
@@ -12,6 +11,7 @@ const ChessPlayerContainer = () => {
     const fetchPlayerData = (username) => {
         fetchPlayer(username);
         fetchPlayerGames(username);
+        fetchPlayerCountry(player.country);
     }
 
     const fetchPlayer = async (username) => {
@@ -34,10 +34,9 @@ const ChessPlayerContainer = () => {
 
     return(
         <>
-
-        <h1>This is the container</h1>
-        <Player playerData = {playerData} fetchPlayerCountry = {fetchPlayerCountry}></Player>
-        <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
+            <h1>This is the container</h1>
+            <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
+            <Player playerData = {player} playerCountry = {playerCountry}></Player>
         </>
     )
     
