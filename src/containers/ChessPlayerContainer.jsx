@@ -7,10 +7,12 @@ const ChessPlayerContainer = () => {
     const [player ,  setPlayer] = useState({});
     const [playerGames , setPlayerGames] = useState([]);
     const [playerCountry , setCountry] = useState({});
+    const [playerStats,setStats] = useState({})
 
     const fetchPlayerData = (username) => {
         fetchPlayer(username);
         fetchPlayerGames(username);
+        fetchPlayerStats(username);
     }
 
     const fetchPlayer = async (username) => {
@@ -18,6 +20,7 @@ const ChessPlayerContainer = () => {
         const playerData = await response.json();
         setPlayer(playerData);
         fetchPlayerCountry(playerData.country);
+
     }
 
     const fetchPlayerGames = async (username) => {
@@ -32,11 +35,17 @@ const ChessPlayerContainer = () => {
         setCountry(countryData);
     }
 
+    const fetchPlayerStats = async (username) => {
+        const reponse = await fetch(`https://api.chess.com/pub/player/${username}/stats`)
+        const statsData = await reponse.json();
+        setStats(statsData);
+    }
+
     return(
         <>
             <h1>This is the container</h1>
             <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
-            <Player playerData = {player} playerCountry = {playerCountry}></Player>
+            <Player playerData = {player} playerCountry = {playerCountry} playerStats = {playerStats}></Player>
         </>
     )
     

@@ -4,7 +4,7 @@ const PlayerInfo = (props) => {
 
     return(
         <>
-            <h3>This is the player info component</h3>
+            <h2>Account information for {`${props.playerUserName}`}</h2>
             <p>Username: {props.playerUserName}</p>
             <p>Followers: {props.playerFollowers}</p>
             <p>League: {props.playerLeague}</p>
