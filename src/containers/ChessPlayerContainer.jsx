@@ -25,7 +25,7 @@ const ChessPlayerContainer = () => {
         <>
 
         <h1>This is the container</h1>
-        <Player></Player>
+        <Player playerData = {playerData}></Player>
         <PlayerSearchForm fetchPlayer = {fetchPlayer}/>
         </>
     )
