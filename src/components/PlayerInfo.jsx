@@ -1,4 +1,4 @@
-const PlayerInfo = () => {
+const PlayerInfo = ({}) => {
 
 
 
