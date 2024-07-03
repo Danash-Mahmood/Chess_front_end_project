@@ -1,42 +1,37 @@
-import { useState , useEffect } from "react";
 import PlayerSearchForm from "../components/PlayerSearchForm";
 import Player from "./Player";
 
-const ChessPlayerContainer = () => {
+const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => {
 
-    const [player ,  setPlayer] = useState({});
-    const [playerGames , setPlayerGames] = useState([]);
-    const [playerCountry , setCountry] = useState({});
-
-    const fetchPlayerData = (username) => {
-        fetchPlayer(username);
-        fetchPlayerGames(username);
+    const fetchPlayerData = async (username) => {
+        const [playerData, playerCountry] = await fetchPlayer(username);
+        const playerGames = await fetchPlayerGames(username);
+        onSearchPlayer(playerData, playerGames, playerCountry);
     }
 
     const fetchPlayer = async (username) => {
         const response = await fetch(`https://api.chess.com/pub/player/${username}`);
         const playerData = await response.json();
-        setPlayer(playerData);
-        fetchPlayerCountry(playerData.country);
+        return [playerData, await fetchPlayerCountry(playerData.country)];
     }
 
     const fetchPlayerGames = async (username) => {
         const response = await fetch(`https://api.chess.com/pub/player/${username}/games/archives`);
         const gameData = await response.json();
-        setPlayerGames(gameData);
+        return gameData;
     }
 
     const fetchPlayerCountry = async (countryURL) => {
         const response = await fetch(`${countryURL}`);
         const countryData = await response.json();
-        setCountry(countryData);
+        return countryData;
     }
 
     return(
         <>
             <h1>This is the container</h1>
             <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
-            <Player playerData = {player} playerCountry = {playerCountry}></Player>
+            <Player playerData = {playerData} playerCountry = {playerCountry}></Player>
         </>
     )
     

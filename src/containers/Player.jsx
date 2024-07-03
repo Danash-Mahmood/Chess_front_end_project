@@ -9,7 +9,6 @@ const Player = ({playerData , playerCountry}) => {
 
     return(
         <>
-
             <PlayerInfo
                 playerName = {playerData.name}
                 playerJoinedTimeStamp = {playerData.joined}
@@ -18,11 +17,6 @@ const Player = ({playerData , playerCountry}) => {
                 playerUserName = {playerData.username}
                 playerFollowers = {playerData.followers}
                 playerCountry = {playerCountry}/>
-
-            <PlayerStats></PlayerStats>
-
-            <PlayerGames></PlayerGames>
-        
         </>
     )
 }
