@@ -9,7 +9,6 @@ const Player = ({playerData , playerCountry,playerStats}) => {
 
     return(
         <>
-
             <PlayerInfo
                 playerName = {playerData.name}
                 playerJoinedTimeStamp = {playerData.joined}
