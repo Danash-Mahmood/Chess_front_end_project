@@ -1,29 +1,20 @@
-
-
 const PlayerStats = (props) => {
-
-   
-
-
-
 
     return(
         <>
         <h2>Statistics for {`${props.playerUserName}`}</h2> 
         <h2>Rapid</h2>
-        <p>Current Rapid Rating: {props.playerRapidStats.last.rating}</p>
-        <p>Best Rapid Rating: {props.playerBulletStats.best.rating}</p>
-        <p>Record: Wins {props.playerRapidStats.record.win} Losses {props.playerRapidStats.record.loss} Draws {props.playerRapidStats.record.draw}</p> 
+        <p>Current Rapid Rating: {props.playerStats["chess_rapid"].last.rating}</p>
+        <p>Best Rapid Rating: {props.playerStats["chess_rapid"].best.rating}</p>
+        <p>Record: Wins {props.playerStats["chess_rapid"].record.win} Losses {props.playerStats["chess_rapid"].record.loss} Draws {props.playerStats["chess_rapid"].record.draw}</p> 
         <h2>Blitz</h2>
-        <p>Current Blitz Rating: {props.playerBlitzStats.last.rating}</p>
-        <p>Best Blitz Rating: {props.playerRapidStats.best.rating}</p>
-        <p>Record: Wins {props.playerBlitzStats.record.win} Losses {props.playerBlitzStats.record.loss} Draws {props.playerBlitzStats.record.draw}</p> 
+        <p>Current Blitz Rating: {props.playerStats["chess_blitz"].last.rating}</p>
+        <p>Best Blitz Rating: {props.playerStats["chess_blitz"].best.rating}</p>
+        <p>Record: Wins {props.playerStats["chess_blitz"].record.win} Losses {props.playerStats["chess_blitz"].record.loss} Draws {props.playerStats["chess_blitz"].record.draw}</p> 
         <h2>Bullet</h2>
-        <p>Current Bullet Rating: {props.playerBulletStats.last.rating}</p>
-        <p>Best Bullet Rating: {props.playerBulletStats.best.rating}</p>
-        <p>Record: Wins {props.playerBulletStats.record.win} Losses {props.playerBulletStats.record.loss} Draws {props.playerBulletStats.record.draw}</p> 
-         
-        
+        <p>Current Bullet Rating: {props.playerStats["chess_bullet"].last.rating}</p>
+        <p>Best Bullet Rating: {props.playerStats["chess_bullet"].best.rating}</p>
+        <p>Record: Wins {props.playerStats["chess_bullet"].record.win} Losses {props.playerStats["chess_bullet"].record.loss} Draws {props.playerStats["chess_bullet"].record.draw}</p> 
         </>
      
     )
