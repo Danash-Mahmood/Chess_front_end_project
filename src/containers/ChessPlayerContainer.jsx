@@ -6,7 +6,8 @@ const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => 
     const fetchPlayerData = async (username) => {
         const [playerData, playerCountry] = await fetchPlayer(username);
         const playerGames = await fetchPlayerGames(username);
-        onSearchPlayer(playerData, playerGames, playerCountry);
+        const playerStats = await fetchPlayerStats(username);
+        onSearchPlayer(playerData, playerGames, playerCountry, playerStats);
     }
 
     const fetchPlayer = async (username) => {
@@ -30,7 +31,7 @@ const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => 
     const fetchPlayerStats = async (username) => {
         const reponse = await fetch(`https://api.chess.com/pub/player/${username}/stats`)
         const statsData = await reponse.json();
-        setStats(statsData);
+        return statsData;
     }
 
     return(

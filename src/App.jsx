@@ -10,11 +10,13 @@ function App() {
   const [player ,  setPlayer] = useState({});
   const [playerGames , setPlayerGames] = useState([]);
   const [playerCountry , setCountry] = useState({});
+  const [playerStats , setStats] = useState({});
 
-  const handleSearchPlayer = (playerData, playerGames, playerCountry) => {
+  const handleSearchPlayer = (playerData, playerGames, playerCountry, playerStats) => {
     setPlayer(playerData);
     setPlayerGames(playerGames);
     setCountry(playerCountry);
+    setStats(playerStats);
   }
 
   const router = createBrowserRouter(
@@ -29,7 +31,7 @@ function App() {
           },
           {
             path: "/playerstats",
-            element: <PlayerStats />
+            element: <PlayerStats playerStats = {playerStats} playerUserName = {player.name}/>
           },
           {
             path: "/playergames",
