@@ -27,6 +27,12 @@ const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => 
         return countryData;
     }
 
+    const fetchPlayerStats = async (username) => {
+        const reponse = await fetch(`https://api.chess.com/pub/player/${username}/stats`)
+        const statsData = await reponse.json();
+        setStats(statsData);
+    }
+
     return(
         <>
             <h1>This is the container</h1>
