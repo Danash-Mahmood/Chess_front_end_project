@@ -1,0 +1,9 @@
+.card-game {
+    padding: 1rem;
+    background-color: var(--darkGrey) !important;
+    color: var(--white) !important;
+}
+
+.card-stat .card-img-top {
+    width: 100% !important;
+}

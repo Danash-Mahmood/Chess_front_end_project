@@ -1,14 +1,22 @@
 import { Link, Outlet } from "react-router-dom";
+import './style/Navbar.css'
 
 const Navbar = () => {
     return (
         <>
-            <nav>
-                <ul>
-                    <li><Link to = "/">Home</Link></li>
-                    <li><Link to = "/playerstats">Player's Stats</Link></li>
-                    <li><Link to = "/playergames">Player's Games</Link></li>
-                </ul>
+            <nav className="navbar navbar-expand-lg">
+                <div className="container-fluid">
+                    <Link to = "/" className="navbar-brand">Rook it Up</Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item"><Link to = "/playerstats" className="nav-link active">Player's Stats</Link></li>
+                            <li className="nav-item"><Link to = "/playergames" className="nav-link active">Player's Games</Link></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
             <Outlet />
         </>

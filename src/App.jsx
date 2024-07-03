@@ -31,7 +31,7 @@ function App() {
           },
           {
             path: "/playerstats",
-            element: <PlayerStats playerStats = {playerStats} playerUserName = {player.name}/>
+            element: <PlayerStats playerStats = {playerStats} playerUserName = {player.username}/>
           },
           {
             path: "/playergames",
@@ -44,9 +44,7 @@ function App() {
 
   return (
     <>
-
-      <RouterProvider router = { router }/>
-    
+      <RouterProvider router = { router }/>    
     </>
      
   )

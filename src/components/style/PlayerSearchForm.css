@@ -1,0 +1,9 @@
+.search-form {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.search-bar-player {
+    width: 80%;
+}

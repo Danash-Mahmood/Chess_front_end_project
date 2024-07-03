@@ -1,0 +1,30 @@
+.navbar {
+    width: 100%;
+    background-color: var(--darkGrey);
+}
+
+.navbar a {
+    color: var(--white);
+    text-decoration: none;
+    --bs-navbar-brand-hover-color: var(--white) !important;
+    transition: all 0.3s !important;
+}
+
+.nav-link {
+    color: var(--white) !important;
+}
+
+.navbar-toggler {
+    color: var(--lightGreen) !important;
+    background: var(--white) !important;
+}
+
+.navbar-toggler:hover {
+    color: var(--lightGreen);
+    --bs-navbar-toggler-border-color: var(--lightGreen);
+}
+
+.navbar a:hover,
+.nav-link:hover {
+    color: var(--lightGreen) !important;
+}

@@ -27,7 +27,6 @@ const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => 
 
     return(
         <>
-            <h1>This is the container</h1>
             <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
             <Player playerData = {playerData} playerCountry = {playerCountry}></Player>
         </>
