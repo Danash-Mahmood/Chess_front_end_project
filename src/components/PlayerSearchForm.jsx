@@ -1,15 +1,13 @@
 import { useState } from "react";
 
-const PlayerSearchForm = ({data}) => {
+const PlayerSearchForm = ({ data , fetchPlayer }) => {
 
 
     const [playerUserName,setPlayerUserName] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        //loadPlayerStats(playerUserName);
-        //loadPlayerInfo(playerUserName);
+        fetchPlayer(playerUserName);
     }
 
 
