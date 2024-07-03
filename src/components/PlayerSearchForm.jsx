@@ -1,7 +1,9 @@
 import { useState } from "react";
+import BootstrapContainer from "./BootstrapContainer"
+import Row from "../components/Row"
+import "./style/PlayerSearchForm.css"
 
 const PlayerSearchForm = ({ data , fetchPlayerData }) => {
-
 
     const [playerUserName,setPlayerUserName] = useState("");
 
@@ -10,19 +12,19 @@ const PlayerSearchForm = ({ data , fetchPlayerData }) => {
         fetchPlayerData(playerUserName);
     }
 
-
-
     return(
 
         <>
-        <h2>This is the search form component</h2>
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder = "enter chess.com username" value={playerUserName} onChange = {(event) => {setPlayerUserName(event.target.value); console.log(event.target)}} ></input>
-            {/* make input window slightly longer */}
-            <input type = "submit" placeholder = "submit" ></input>
-        </form>
-        
-        
+            <BootstrapContainer>
+                <Row>
+                    <h1 className = "title">Search for Player!</h1>
+                    <form onSubmit={handleSubmit} className = "search-form">
+                        <input type="text" className = "search-bar-player" placeholder = "Please enter a chess.com username" value={playerUserName} onChange = {(event) => {setPlayerUserName(event.target.value); console.log(event.target)}} ></input>
+                        {/* make input window slightly longer */}
+                        <input type = "submit" placeholder = "submit" ></input>
+                    </form>
+                </Row>
+            </BootstrapContainer>
         </>
     )
 }

@@ -1,0 +1,9 @@
+/* This file creates a bunch of variables to hold colours to be used across other CSS files */
+:root {
+    --darkGrey: #242424;
+    --lightGrey: #3d3d3d;
+    --lightGreen: #74b166;
+    --darkGreen: #5f9353;
+    --white: #eeeeee;
+    --offWhite: #bebebe;
+}

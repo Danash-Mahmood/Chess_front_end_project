@@ -1,0 +1,11 @@
+.card-player {
+    display: flex;
+    flex-direction: row !important;
+    padding: 1rem;
+    background-color: var(--darkGrey) !important;
+    color: var(--white) !important;
+}
+
+.card-img-top {
+    width: 15rem !important;
+}
