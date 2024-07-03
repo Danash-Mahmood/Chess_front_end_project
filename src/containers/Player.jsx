@@ -2,7 +2,7 @@ import PlayerGames from "../components/PlayerGames";
 import PlayerInfo from "../components/PlayerInfo"
 import PlayerStats from "../components/PlayerStats"
 
-const Player = ({playerData}) => {
+const Player = ({playerData , playerCountry}) => {
 
     
 
@@ -10,11 +10,18 @@ const Player = ({playerData}) => {
     return(
         <>
 
-        <PlayerInfo userName ={playerData.userName} playerJoinedTimeStamp = {playerData.joined} playerLastOnline = {playerData.last_online} playerLeague = {playerData.league} playerUserName = {playerData.username} playerFollowers = {playerData.followers}></PlayerInfo>
+            <PlayerInfo
+                playerName = {playerData.name}
+                playerJoinedTimeStamp = {playerData.joined}
+                playerLastOnline = {playerData.last_online}
+                playerLeague = {playerData.league}
+                playerUserName = {playerData.username}
+                playerFollowers = {playerData.followers}
+                playerCountry = {playerCountry}/>
 
-        <PlayerStats></PlayerStats>
+            <PlayerStats></PlayerStats>
 
-        <PlayerGames></PlayerGames>
+            <PlayerGames></PlayerGames>
         
         </>
     )
