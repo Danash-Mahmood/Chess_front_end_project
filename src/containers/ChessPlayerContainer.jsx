@@ -36,7 +36,7 @@ const ChessPlayerContainer = () => {
         <>
 
         <h1>This is the container</h1>
-        <Player fetchPlayerCountry = {fetchPlayerCountry}></Player>
+        <Player playerData = {playerData} fetchPlayerCountry = {fetchPlayerCountry}></Player>
         <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
         </>
     )
