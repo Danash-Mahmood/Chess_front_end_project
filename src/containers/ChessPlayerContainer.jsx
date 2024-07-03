@@ -11,13 +11,14 @@ const ChessPlayerContainer = () => {
     const fetchPlayerData = (username) => {
         fetchPlayer(username);
         fetchPlayerGames(username);
-        fetchPlayerCountry(player.country);
+       
     }
 
     const fetchPlayer = async (username) => {
         const response = await fetch(`https://api.chess.com/pub/player/${username}`);
         const playerData = await response.json();
         setPlayer(playerData);
+        fetchPlayerCountry(player.country);
     }
 
     const fetchPlayerGames = async (username) => {
