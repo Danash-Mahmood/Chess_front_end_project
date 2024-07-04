@@ -1,7 +1,7 @@
 import PlayerSearchForm from "../components/PlayerSearchForm";
 import Player from "./Player";
 
-const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => {
+const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry,dateFunction}) => {
 
     const fetchPlayerData = async (username) => {
         const [playerData, playerGames, playerCountry, playerStats,lastMonthGames] = await fetchPlayer(username);
@@ -34,13 +34,16 @@ const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry}) => 
 
         return [playerData, playerGames, playerCountry, playerStats,lastMonthGames];
     }
+  
 
     return(
         <>
             <PlayerSearchForm fetchPlayerData = {fetchPlayerData}/>
-            <Player playerData = {playerData} playerCountry = {playerCountry}></Player>
+            <Player playerData = {playerData} playerCountry = {playerCountry} dateFunction = {dateFunction}></Player>
         </>
     )
+
+   
     
 }
 

@@ -26,7 +26,7 @@
 
 //     return (
 //         <>
-//             <div div className = "card-container col-lg-4 col-md-12 col-sm-12">
+//             <div className = "card-container col-lg-4 col-md-12 col-sm-12">
 //                 <div className="card card-game">
 //                     {/* <img src="" className="card-img-top" alt="blitz logo"/> */}
 //                     <div className="card-body">
