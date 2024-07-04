@@ -22,6 +22,22 @@ function App() {
     setLastMonthsGames(lastMonthGames);
   }
 
+  const convTimeStampToDate = (timeStamp) => {
+    const date = new Date(timeStamp * 1000);
+
+    const day = date.getDate();
+    const month = date.getMonth() + 1; 
+    const year = date.getFullYear();
+
+
+    const formattedDay = day < 10 ? '0' + day : day;
+    const formattedMonth = month < 10 ? '0' + month : month;
+
+    const FormattedDate = `${formattedDay}/${formattedMonth}/${year}`;
+
+    return FormattedDate;
+}
+
   const router = createBrowserRouter(
     [
       {
@@ -30,7 +46,7 @@ function App() {
         children: [
           {
             path: "/",
-            element: <ChessPlayerContainer onSearchPlayer = {handleSearchPlayer} playerData = {player} playerCountry = {playerCountry}/>
+            element: <ChessPlayerContainer onSearchPlayer = {handleSearchPlayer} playerData = {player} playerCountry = {playerCountry} dateFunction = {convTimeStampToDate}/>
           },
           {
             path: "/playerstats",
@@ -38,7 +54,7 @@ function App() {
           },
           {
             path: "/playergames",
-            element: <PlayerGames playerGames = {playerGames} playerUserName = {player.username} lastMonthGames = {lastMonthGames}/>
+            element: <PlayerGames playerGames = {playerGames} playerUserName = {player.username} lastMonthGames = {lastMonthGames} dateFunction = {convTimeStampToDate}/>
           }
         ]
       }

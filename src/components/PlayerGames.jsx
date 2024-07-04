@@ -3,7 +3,7 @@ import Row from "./Row"
 import { useState } from "react";
 
 
-const PlayerGames = ({playerGames,playerUserName,lastMonthGames}) => {
+const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) => {
 
     // For this file you will just need to get the game data similar to the PlayerStats and then just iterate through the number
     // of games you want with a for loop and create a card for each one. Code will be somewhat similar to below and will go between the rows:
@@ -23,12 +23,14 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames}) => {
     // console.log(lastMonthGames);
     const lastMonthGamesObjects = lastMonthGames.games;
     // console.log(lastMonthGames.games);
+    console.log(lastMonthGamesObjects);
 
     const mostRecentGame = lastMonthGamesObjects[lastMonthGames.games.length -1];
-    const secondMostRecentGame = lastMonthGames[lastMonthGames.games.length -2];
-    const thirdMostRecentGame = lastMonthGames[lastMonthGames.games.length -3];
+    const secondMostRecentGame = lastMonthGamesObjects[lastMonthGames.games.length -2];
+    const thirdMostRecentGame = lastMonthGamesObjects[lastMonthGames.games.length -3];
 
-    console.log(mostRecentGame);
+    // console.log(mostRecentGame);
+    // console.log(secondMostRecentGame);
 
     // console.log(mostRecentGame.accuracies);
 
@@ -59,18 +61,87 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames}) => {
 
     }
 
+    const dateOfGame = (game) => {
+        return dateFunction(game.end_time);
+     
+    }
+
+    const mostAccurateGameInLastMonth = (lastMonthGamesObjects) => {
+        let mostAccurateGame = lastMonthGamesObjects[0];
+        let maxAccuracy = 0; //why do we need the let keyword here for this to work? Wouldn't putting it in global scope also work
+        for(let game of lastMonthGamesObjects){
+            console.log(game);
+            const playerColour = whatColourIsUser(playerUserName,game);
+        //     if(game.accuracies != undefined){
+        //          maxAccuracy = 0;
+   
+        //    }
+        //    else{
+        //     continue;
+        //    }
+            const accuracy = UserAccuracy(playerUserName,game);
+
+            if(accuracy > maxAccuracy){
+                maxAccuracy = accuracy;
+                mostAccurateGame = game;
+            }
+            else{
+                continue;
+            }
+        }
+        return mostAccurateGame;
+    }
+
 
     return(
         <>
             
             <BootstrapContainer>
                 <Row>
-                    <h2>Recent Game 1</h2>
-                    <hr></hr>
-                    <p>Time control: {timeControl(mostRecentGame)}</p>
-                    <p> {`${playerUserName}`} : {whatColourIsUser(playerUserName,mostRecentGame)} pieces</p>
-                    <p>{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,mostRecentGame)} </p>
-                    {/* <Game lastMonthGames = {lastMonthGames} playerUserName = {playerUserName}></Game> */}
+                    <div className = "card-container col-lg-4 col-md-12 col-sm-12">
+                     <div className="card card-game">
+                        <div className="card-body">
+                     <h5 className="card-title">Recent Game 1 on {dateOfGame(mostRecentGame)}</h5>
+                      <p className = "card-text">Time control: {timeControl(mostRecentGame)}</p>
+                       <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,mostRecentGame)}</p>
+                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,mostRecentGame)}</p> 
+                     </div>
+                </div>
+                </div>
+
+                <div className = "card-container col-lg-4 col-md-12 col-sm-12">
+                     <div className="card card-game">
+                        <div className="card-body">
+                     <h5 className="card-title">Recent Game 2 on {dateOfGame(secondMostRecentGame)}</h5>
+                      <p className = "card-text">Time control: {timeControl(secondMostRecentGame)}</p>
+                       <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,secondMostRecentGame)}</p>
+                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,secondMostRecentGame)}</p> 
+                     </div>
+                </div>
+                </div>
+
+                <div className = "card-container col-lg-4 col-md-12 col-sm-12">
+                     <div className="card card-game">
+                        <div className="card-body">
+                     <h5 className="card-title">Recent Game 3 on {dateOfGame(thirdMostRecentGame)}</h5>
+                      <p className = "card-text">Time control: {timeControl(thirdMostRecentGame)}</p>
+                       <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,thirdMostRecentGame)}</p>
+                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,thirdMostRecentGame)}</p> 
+                     </div>
+                </div>
+                </div>
+
+                <div className = "card-container col-lg-4 col-md-12 col-sm-12">
+                     <div className="card card-game">
+                        <div className="card-body">
+                     <h5 className="card-title">Most Accurate Game in last month {dateOfGame(mostAccurateGameInLastMonth(lastMonthGamesObjects))}</h5>
+                      <p className = "card-text">Time control: {timeControl(mostAccurateGameInLastMonth(lastMonthGamesObjects))}</p>
+                       <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,mostAccurateGameInLastMonth(lastMonthGamesObjects))}</p>
+                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,mostAccurateGameInLastMonth(lastMonthGamesObjects))}</p> 
+                     </div>
+                </div>
+                </div>
+
                 </Row>
             </BootstrapContainer>
         </>

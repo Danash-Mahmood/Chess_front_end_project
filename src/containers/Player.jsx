@@ -2,7 +2,7 @@ import PlayerInfo from "../components/PlayerInfo"
 import BootstrapContainer from "../components/BootstrapContainer"
 import Row from "../components/Row"
 
-const Player = ({playerData , playerCountry}) => {
+const Player = ({playerData , playerCountry,dateFunction}) => {
 
     return (
         <>
@@ -10,8 +10,8 @@ const Player = ({playerData , playerCountry}) => {
                 <Row>
                     <PlayerInfo
                     playerImg = {playerData.avatar}
-                    playerJoinedTimeStamp = {playerData.joined}
-                    playerLastOnline = {playerData.last_online}
+                    playerJoinedTimeStamp = {dateFunction(playerData.joined)}
+                    playerLastOnline = {dateFunction(playerData.last_online)}
                     playerLeague = {playerData.league}
                     playerUserName = {playerData.username}
                     playerFollowers = {playerData.followers}
