@@ -33,9 +33,14 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) =
     // console.log(secondMostRecentGame);
 
     // console.log(mostRecentGame.accuracies);
+    function capitalizeFirstLetter(string) {
+        if (!string) return '';
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    } //the api decapitalises the username in the search
+    
 
     const whatColourIsUser = (playerUserName,gameBeingShown) => {
-        if(playerUserName === gameBeingShown.black.username){
+        if(capitalizeFirstLetter(playerUserName) === gameBeingShown.black.username){
             return "black";
         }
         else{
@@ -71,14 +76,7 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) =
         let maxAccuracy = 0; //why do we need the let keyword here for this to work? Wouldn't putting it in global scope also work
         for(let game of lastMonthGamesObjects){
             console.log(game);
-            const playerColour = whatColourIsUser(playerUserName,game);
-        //     if(game.accuracies != undefined){
-        //          maxAccuracy = 0;
-   
-        //    }
-        //    else{
-        //     continue;
-        //    }
+            
             const accuracy = UserAccuracy(playerUserName,game);
 
             if(accuracy > maxAccuracy){
@@ -92,6 +90,31 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) =
         return mostAccurateGame;
     }
 
+    const oponentUserName = (game) => {
+        const userColour = whatColourIsUser(playerUserName,game);
+        if(userColour == "black"){
+            return game.white.username;
+        }
+        else{
+            return game.black.username;
+        }
+    }
+
+    // const outcome = (game) => {
+    //     const userColour = whatColourIsUser(playerUserName,game);
+    //     console.log(userColour);
+    //     console.log(game.userColour.result);
+    //     if(game.userColour.result == "win"){
+    //         return "Win";
+    //     }
+    //     else if (game.userColour.result == "draw"){
+    //         return "Draw";
+    //     }
+    //     else{
+    //         return "Loss";
+    //     }
+    // }
+
 
     return(
         <>
@@ -101,10 +124,11 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) =
                     <div className = "card-container col-lg-4 col-md-12 col-sm-12">
                      <div className="card card-game">
                         <div className="card-body">
-                     <h5 className="card-title">Recent Game 1 on {dateOfGame(mostRecentGame)}</h5>
+                     <h5 className="card-title">Recent Game 1 on {dateOfGame(mostRecentGame)} vs {oponentUserName(mostRecentGame)}</h5>
                       <p className = "card-text">Time control: {timeControl(mostRecentGame)}</p>
                        <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,mostRecentGame)}</p>
-                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,mostRecentGame)}</p> 
+                       {/* <p className = "card-text">Outcome: {outcome(mostRecentGame)}</p> */}
+                       <p className = "card-text">{`${playerUserName}`} accuracy: {UserAccuracy(playerUserName,mostRecentGame)} vs {oponentUserName(mostRecentGame)} accuracy: {UserAccuracy(oponentUserName(mostRecentGame),mostRecentGame)}</p> 
                      </div>
                 </div>
                 </div>
@@ -112,10 +136,10 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) =
                 <div className = "card-container col-lg-4 col-md-12 col-sm-12">
                      <div className="card card-game">
                         <div className="card-body">
-                     <h5 className="card-title">Recent Game 2 on {dateOfGame(secondMostRecentGame)}</h5>
+                     <h5 className="card-title">Recent Game 2 on {dateOfGame(secondMostRecentGame)} vs {oponentUserName(secondMostRecentGame)}</h5>
                       <p className = "card-text">Time control: {timeControl(secondMostRecentGame)}</p>
                        <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,secondMostRecentGame)}</p>
-                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,secondMostRecentGame)}</p> 
+                       <p className = "card-text">{`${playerUserName}`} accuracy: {UserAccuracy(playerUserName,secondMostRecentGame)} vs {oponentUserName(secondMostRecentGame)} accuracy: {UserAccuracy(oponentUserName(secondMostRecentGame),secondMostRecentGame)}</p> 
                      </div>
                 </div>
                 </div>
@@ -123,10 +147,10 @@ const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) =
                 <div className = "card-container col-lg-4 col-md-12 col-sm-12">
                      <div className="card card-game">
                         <div className="card-body">
-                     <h5 className="card-title">Recent Game 3 on {dateOfGame(thirdMostRecentGame)}</h5>
+                     <h5 className="card-title">Recent Game 3 on {dateOfGame(thirdMostRecentGame)} vs {oponentUserName(thirdMostRecentGame)}</h5>
                       <p className = "card-text">Time control: {timeControl(thirdMostRecentGame)}</p>
                        <p className = "card-text">{`${playerUserName}`} : {whatColourIsUser(playerUserName,thirdMostRecentGame)}</p>
-                       <p className = "card-text">{`${playerUserName}`} accuracy is {UserAccuracy(playerUserName,thirdMostRecentGame)}</p> 
+                       <p className = "card-text">{`${playerUserName}`} accuracy: {UserAccuracy(playerUserName,thirdMostRecentGame)} vs {oponentUserName(thirdMostRecentGame)} accuracy: {UserAccuracy(oponentUserName(thirdMostRecentGame),thirdMostRecentGame)}</p> 
                      </div>
                 </div>
                 </div>
