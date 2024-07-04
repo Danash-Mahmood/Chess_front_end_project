@@ -19,7 +19,7 @@ const PlayerStats = (props) => {
                     <h1 className = "title">Statistics for {`${props.playerUserName}`}</h1>
                     <div className = "card-container col-lg-4 col-md-12 col-sm-12">
                         <div className="card card-stat">
-                            <img src="https://images.chesscomfiles.com/uploads/v1/chess_term/80febd7c-bcb1-11ea-8ef7-07dbcd6ea7c7.090c6f94.630x354o.46122acf9ffe@2x.png" className="card-img-top" alt="blitz logo"/>
+                            <img src= "https://www.chessjournal.com/wp-content/uploads/2022/06/Rapid-Chess-750x422.jpg"className="card-img-top" alt="blitz logo"/>
                             <div className="card-body">
                                 <h5 className="card-title">Rapid</h5>
                                 <p className = "card-text">Current Rapid Rating: {props.playerStats["chess_rapid"].last.rating}</p>
@@ -30,7 +30,7 @@ const PlayerStats = (props) => {
                     </div>
                     <div className = "card-container col-lg-4 col-md-12 col-sm-12">
                         <div className="card card-stat">
-                            <img src="https://www.chessjournal.com/wp-content/uploads/2022/06/Rapid-Chess-750x422.jpg" className="card-img-top" alt="rapid logo"/>
+                            <img src="https://images.chesscomfiles.com/uploads/v1/chess_term/80febd7c-bcb1-11ea-8ef7-07dbcd6ea7c7.090c6f94.630x354o.46122acf9ffe@2x.png" className="card-img-top" alt="rapid logo"/>
                             <div className="card-body">
                                 <h5 className="card-title">Blitz</h5>
                                 <p className = "card-text">Current Blitz Rating: {props.playerStats["chess_blitz"].last.rating}</p>
