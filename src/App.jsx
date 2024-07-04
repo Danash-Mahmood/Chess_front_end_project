@@ -8,15 +8,18 @@ import './App.css'
 
 function App() {
   const [player ,  setPlayer] = useState({});
-  const [playerGames , setPlayerGames] = useState([]);
+  const [playerGames , setPlayerGames] = useState({});
   const [playerCountry , setCountry] = useState({});
   const [playerStats , setStats] = useState({});
+  const [lastMonthGames,setLastMonthsGames] = useState({});
 
-  const handleSearchPlayer = (playerData, playerGames, playerCountry, playerStats) => {
+
+  const handleSearchPlayer = (playerData, playerGames, playerCountry, playerStats,lastMonthGames) => {
     setPlayer(playerData);
     setPlayerGames(playerGames);
     setCountry(playerCountry);
     setStats(playerStats);
+    setLastMonthsGames(lastMonthGames);
   }
 
   const router = createBrowserRouter(
@@ -35,7 +38,7 @@ function App() {
           },
           {
             path: "/playergames",
-            element: <PlayerGames />
+            element: <PlayerGames playerGames = {playerGames} playerUserName = {player.username} lastMonthGames = {lastMonthGames}/>
           }
         ]
       }
