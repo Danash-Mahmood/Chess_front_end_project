@@ -15,11 +15,8 @@ const ChessPlayerContainer = ({onSearchPlayer , playerData , playerCountry,dateF
 
         response = await fetch(`https://api.chess.com/pub/player/${username}/games/archives`);
         const playerGames = await response.json();
-        // console.log(playerGames);
         const gamesArray = playerGames["archives"];
-        // console.log(gamesArray);
         const lastMonthGamesURL= gamesArray[gamesArray.length -1];
-        // console.log(lastMonthGamesURL);
         response = await fetch(lastMonthGamesURL);
         const lastMonthGames = await response.json();
 

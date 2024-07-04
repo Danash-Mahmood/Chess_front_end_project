@@ -5,40 +5,22 @@ import { useState } from "react";
 
 const PlayerGames = ({playerGames,playerUserName,lastMonthGames,dateFunction}) => {
 
-    // For this file you will just need to get the game data similar to the PlayerStats and then just iterate through the number
-    // of games you want with a for loop and create a card for each one. Code will be somewhat similar to below and will go between the rows:
-
-    /* 
-    * for (int i = 0; i < 3; i++) {
-            <Game
-                gameDate = {props.gameDate}
-                outcome = {props.outcome}
-                gameWinner = {props.winner}
-                gameLoser = {props.loser}
-            />
-        }
-    *
-    */
-
-    // console.log(lastMonthGames);
     const lastMonthGamesObjects = lastMonthGames.games;
-    // console.log(lastMonthGames.games);
+   
     console.log(lastMonthGamesObjects);
 
     const mostRecentGame = lastMonthGamesObjects[lastMonthGames.games.length -1];
     const secondMostRecentGame = lastMonthGamesObjects[lastMonthGames.games.length -2];
     const thirdMostRecentGame = lastMonthGamesObjects[lastMonthGames.games.length -3];
 
-    // console.log(mostRecentGame);
-    // console.log(secondMostRecentGame);
-
-    // console.log(mostRecentGame.accuracies);
+   
     function capitalizeFirstLetter(string) {
         if (!string) return '';
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     } //the api decapitalises the username in the search
     
-
+    // The reason why I've had to do functions rather than access props directly is because we need to find out what colour piece the user is first due to the way the api is layed out
+    // to get the accuracy of the user the api is {black: {result: "win",user: danash_0408}}, accuracy : {white :80 , black: 60}} etc so in order to the info needed we need to use functions rather than accsess props directly
     const whatColourIsUser = (playerUserName,gameBeingShown) => {
         if(capitalizeFirstLetter(playerUserName) === gameBeingShown.black.username){
             return "black";
